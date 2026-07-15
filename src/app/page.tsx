@@ -10,49 +10,58 @@ import {
 } from "@/components/ui/accordion";
 import { HeroIllustration } from "@/components/hero-illustration";
 import { NewsletterForm } from "@/components/newsletter-form";
+import { HeroSignupForm } from "@/components/hero-signup-form";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { SectionHeading } from "@/components/section-heading";
 import {
-  ClipboardCheck,
-  Users,
+  CentralizeIllustration,
+  UnifyIllustration,
+  SimplifyIllustration,
+  AccessIllustration,
+} from "@/components/feature-illustrations";
+import {
   BookOpen,
-  LayoutGrid,
-  Clock,
   UtensilsCrossed,
   Fuel,
   Sparkles,
-  FolderOpen,
-  MessageSquare,
-  BarChart3,
-  Eye,
-  FileStack,
-  MessagesSquare,
-  GaugeCircle,
   UserPlus,
   ListChecks,
   LineChart,
 } from "lucide-react";
 
-const KEY_FEATURES = [
+const FEATURE_ROWS = [
   {
-    icon: Eye,
-    title: "Full visibility",
-    body: "See every engagement's stage at a glance — no more digging through notes to find out where things stand.",
+    illustration: CentralizeIllustration,
+    title: "Centralize and organize your work",
+    body: [
+      "Track every business — your own, or a client's — its stage in your workflow, and your notes in one central place.",
+      "Whether it's one business you run yourself or a full roster of consulting clients, everything lives on the engagement it belongs to.",
+    ],
   },
   {
-    icon: FileStack,
-    title: "Streamlined intake",
-    body: "Collect documents from clients without email back-and-forth.",
+    illustration: UnifyIllustration,
+    title: "Unify your documents and conversations",
+    body: [
+      "No more hunting through email for the file or message you need.",
+      "iakkr keeps documents and conversations attached to the engagement they're about, so you can always refer back to them later.",
+    ],
   },
   {
-    icon: MessagesSquare,
-    title: "Context, not chaos",
-    body: "Every conversation stays attached to the engagement it's about.",
+    illustration: SimplifyIllustration,
+    title: "Simplify your workflows",
+    body: [
+      "Turn next steps into tracked tasks with a status and a due date — nothing falls through the cracks.",
+      "Run vertical-specific assessments that score automatically, so you always know exactly where an engagement stands.",
+    ],
   },
   {
-    icon: GaugeCircle,
-    title: "One command center",
-    body: "Your whole client list, every stage, every score — one dashboard.",
+    illustration: AccessIllustration,
+    title: "Give your team access anywhere",
+    body: [
+      "View, edit, and manage every business from any internet-connected device.",
+      "Your team clocks in and out, and every business, stage, and assessment score rolls up into one report.",
+    ],
   },
 ];
 
@@ -71,54 +80,6 @@ const HOW_IT_WORKS = [
     icon: LineChart,
     title: "Run it day to day",
     body: "Tasks, documents, messages, and your team's time clock all stay attached to the engagement, with reporting across every business at a glance.",
-  },
-];
-
-const SERVICES = [
-  {
-    icon: Users,
-    title: "Business & engagement management",
-    body: "Track every business — your own, or a client's — its stage in your workflow, and your notes in one place.",
-  },
-  {
-    icon: ClipboardCheck,
-    title: "Vertical-specific assessments",
-    body: "Run checklists built for your industry and score results automatically.",
-  },
-  {
-    icon: BookOpen,
-    title: "Content & playbooks",
-    body: "Publish guides and best practices tailored to any industry.",
-  },
-  {
-    icon: FolderOpen,
-    title: "Document sharing",
-    body: "Collect and share files directly on the engagement — no more email attachments.",
-  },
-  {
-    icon: MessageSquare,
-    title: "Messaging",
-    body: "A running conversation tied to the business it's about.",
-  },
-  {
-    icon: ClipboardCheck,
-    title: "Task tracking",
-    body: "Turn next steps into tracked tasks with a status and a due date — nothing falls through the cracks.",
-  },
-  {
-    icon: Clock,
-    title: "Team time tracking",
-    body: "A roster and time clock for your staff, with a timesheet that totals hours automatically.",
-  },
-  {
-    icon: BarChart3,
-    title: "Reporting",
-    body: "See every business, stage, and assessment score across your whole operation at a glance.",
-  },
-  {
-    icon: LayoutGrid,
-    title: "Built for any industry",
-    body: "Pick a vertical or type your own at signup — new industries are data, not code.",
   },
 ];
 
@@ -151,34 +112,27 @@ export default function Home() {
     <div className="flex flex-1 flex-col">
       <SiteHeader />
 
-      <section className="grid items-center gap-10 px-6 py-16 sm:px-10 sm:py-24 lg:grid-cols-2 lg:gap-16">
-        <div className="flex flex-col items-start gap-6 text-left">
-          <Badge variant="secondary" className="gap-1.5">
+      <section className="grid lg:grid-cols-2">
+        <div className="flex flex-col justify-center gap-6 bg-primary px-6 py-16 text-white sm:px-10 sm:py-24 lg:py-28">
+          <Badge className="w-fit gap-1.5 border border-white/30 bg-white/10 text-white">
             <Sparkles className="h-3.5 w-3.5" /> Any industry, any team size
           </Badge>
-          <h1 className="text-balance text-5xl font-extrabold tracking-tight sm:text-6xl">
+          <h1 className="text-balance text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
             All your business, in one place with iakkr
           </h1>
-          <p className="max-w-lg text-balance text-lg text-muted-foreground">
+          <p className="max-w-lg text-balance text-lg text-white/85">
             iakkr is a CRM for running a business day to day — assessments, documents, conversations, tasks, and
             your team&apos;s time clock, all in one place. Run your own business directly, or manage engagements
             for many clients as a consultant — any industry.
           </p>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <Button size="lg" asChild>
-              <Link href="/signup">Get started free</Link>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <Link href="/contact">Talk to us</Link>
-            </Button>
-          </div>
+          <HeroSignupForm />
         </div>
-        <div className="flex justify-center lg:justify-end">
+        <div className="flex items-center justify-center bg-background px-6 py-16 sm:px-10">
           <HeroIllustration />
         </div>
       </section>
 
-      <section className="border-y bg-primary px-6 py-3 text-center text-sm font-medium text-primary-foreground sm:px-10">
+      <section className="border-y bg-foreground px-6 py-3 text-center text-sm font-medium text-background sm:px-10">
         Now in early access — onboarding our first consulting practices and business owners.
       </section>
 
@@ -209,23 +163,29 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-6 py-16 sm:px-10 sm:py-20">
+      <section id="services" className="px-6 py-16 sm:px-10 sm:py-20">
         <div className="mx-auto max-w-5xl">
-          <div className="mb-10 flex flex-col gap-2 text-center">
-            <h2 className="text-2xl font-bold sm:text-3xl">Everything you need, nothing you don&apos;t</h2>
-            <p className="text-muted-foreground">The four things that make iakkr different.</p>
-          </div>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {KEY_FEATURES.map((b) => (
-              <div key={b.title} className="flex flex-col gap-3">
-                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10">
-                  <b.icon className="h-5 w-5 text-primary" />
+          <SectionHeading className="mb-16">What iakkr does</SectionHeading>
+          <div className="flex flex-col gap-20">
+            {FEATURE_ROWS.map((f, i) => (
+              <div
+                key={f.title}
+                className={`grid items-center gap-10 lg:grid-cols-2 lg:gap-16 ${i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`}
+              >
+                <div className="flex flex-col items-start gap-4">
+                  <h3 className="text-balance text-2xl font-bold sm:text-3xl">{f.title}</h3>
+                  {f.body.map((p) => (
+                    <p key={p} className="text-muted-foreground">
+                      {p}
+                    </p>
+                  ))}
+                  <Button asChild className="mt-2 rounded-full">
+                    <Link href="/signup">Learn more +</Link>
+                  </Button>
                 </div>
-                <h3 className="text-base font-semibold">{b.title}</h3>
-                <p className="text-sm text-muted-foreground">{b.body}</p>
-                <a href="#services" className="text-sm font-medium text-primary hover:underline">
-                  Learn more →
-                </a>
+                <div className="flex justify-center">
+                  <f.illustration />
+                </div>
               </div>
             ))}
           </div>
@@ -234,10 +194,7 @@ export default function Home() {
 
       <section className="border-t bg-muted/30 px-6 py-16 sm:px-10 sm:py-20">
         <div className="mx-auto max-w-5xl">
-          <div className="mb-12 flex flex-col gap-2 text-center">
-            <h2 className="text-2xl font-bold sm:text-3xl">How iakkr works</h2>
-            <p className="text-muted-foreground">From signup to a running engagement, in three steps.</p>
-          </div>
+          <SectionHeading className="mb-14">How iakkr works</SectionHeading>
           <div className="grid gap-10 sm:grid-cols-3">
             {HOW_IT_WORKS.map((s, i) => (
               <div key={s.title} className="flex flex-col items-start gap-3">
@@ -250,28 +207,6 @@ export default function Home() {
                 <h3 className="text-base font-semibold">{s.title}</h3>
                 <p className="text-sm text-muted-foreground">{s.body}</p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="services" className="border-t px-6 py-16 sm:px-10 sm:py-20">
-        <div className="mx-auto max-w-5xl">
-          <div className="mb-10 flex flex-col gap-2 text-center">
-            <h2 className="text-2xl font-bold sm:text-3xl">What iakkr does</h2>
-            <p className="text-muted-foreground">Everything a consulting practice needs, in one place.</p>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map((f) => (
-              <Card key={f.title}>
-                <CardHeader>
-                  <f.icon className="h-6 w-6 text-primary" />
-                  <CardTitle className="text-base">{f.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">{f.body}</p>
-                </CardContent>
-              </Card>
             ))}
           </div>
         </div>
@@ -311,7 +246,7 @@ export default function Home() {
             building alongside them. No fake logos or borrowed reviews here: real customer stories will show up
             on this page once they exist.
           </p>
-          <Button asChild className="mt-2">
+          <Button asChild className="mt-2 rounded-full">
             <Link href="/signup">Be one of the first</Link>
           </Button>
         </div>
@@ -326,10 +261,10 @@ export default function Home() {
             publish for the businesses they work with, organized by industry.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Button asChild>
+            <Button asChild className="rounded-full">
               <Link href="/resources">Browse free resources</Link>
             </Button>
-            <Button variant="outline" asChild>
+            <Button variant="outline" asChild className="rounded-full">
               <Link href="/signup">Explore after signing up</Link>
             </Button>
           </div>

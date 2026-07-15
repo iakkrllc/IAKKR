@@ -41,8 +41,9 @@ export function NewsletterForm() {
           placeholder="you@business.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          className="rounded-full"
         />
-        <Button type="submit" disabled={status === "submitting"}>
+        <Button type="submit" disabled={status === "submitting"} className="rounded-full">
           {status === "submitting" ? "Subscribing…" : "Subscribe"}
         </Button>
       </form>
