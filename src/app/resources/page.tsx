@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,6 +7,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 import { FileText, Calculator, Download } from "lucide-react";
 
 export const metadata = { title: "Resources | iakkr" };
@@ -60,11 +61,7 @@ const FAQS = [
 export default function ResourcesPage() {
   return (
     <div className="flex flex-1 flex-col">
-      <header className="border-b px-6 py-4 sm:px-10">
-        <Link href="/">
-          <Image src="/iakkr-logo.png" alt="iakkr" width={80} height={40} className="dark:invert" />
-        </Link>
-      </header>
+      <SiteHeader />
 
       <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-16 px-6 py-12 sm:px-0">
         <div className="flex flex-col gap-2">
@@ -127,20 +124,7 @@ export default function ResourcesPage() {
         </section>
       </main>
 
-      <footer className="border-t px-6 py-8 text-center text-sm text-muted-foreground sm:px-10">
-        © {new Date().getFullYear()} iakkr LLC ·{" "}
-        <Link href="/privacy" className="hover:text-foreground">
-          Privacy
-        </Link>{" "}
-        ·{" "}
-        <Link href="/terms" className="hover:text-foreground">
-          Terms
-        </Link>{" "}
-        ·{" "}
-        <Link href="/contact" className="hover:text-foreground">
-          Contact
-        </Link>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

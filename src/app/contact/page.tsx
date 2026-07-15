@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 
 export default function ContactPage() {
   const [name, setName] = useState("");
@@ -37,11 +37,7 @@ export default function ContactPage() {
 
   return (
     <div className="flex flex-1 flex-col">
-      <header className="border-b px-6 py-4 sm:px-10">
-        <Link href="/">
-          <Image src="/iakkr-logo.png" alt="iakkr" width={80} height={40} className="dark:invert" />
-        </Link>
-      </header>
+      <SiteHeader />
       <main className="flex flex-1 items-start justify-center px-6 py-12">
         <Card className="w-full max-w-md">
           <CardHeader>
@@ -90,16 +86,7 @@ export default function ContactPage() {
           </CardContent>
         </Card>
       </main>
-      <footer className="border-t px-6 py-8 text-center text-sm text-muted-foreground sm:px-10">
-        © {new Date().getFullYear()} iakkr LLC ·{" "}
-        <Link href="/privacy" className="hover:text-foreground">
-          Privacy
-        </Link>{" "}
-        ·{" "}
-        <Link href="/terms" className="hover:text-foreground">
-          Terms
-        </Link>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

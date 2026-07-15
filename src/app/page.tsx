@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,6 +10,8 @@ import {
 } from "@/components/ui/accordion";
 import { HeroIllustration } from "@/components/hero-illustration";
 import { NewsletterForm } from "@/components/newsletter-form";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 import {
   ClipboardCheck,
   Users,
@@ -27,9 +28,12 @@ import {
   FileStack,
   MessagesSquare,
   GaugeCircle,
+  UserPlus,
+  ListChecks,
+  LineChart,
 } from "lucide-react";
 
-const BENEFITS = [
+const KEY_FEATURES = [
   {
     icon: Eye,
     title: "Full visibility",
@@ -49,6 +53,24 @@ const BENEFITS = [
     icon: GaugeCircle,
     title: "One command center",
     body: "Your whole client list, every stage, every score — one dashboard.",
+  },
+];
+
+const HOW_IT_WORKS = [
+  {
+    icon: UserPlus,
+    title: "Sign up and pick your path",
+    body: "Join as a business owner running your own operation, or as a consultant managing engagements for many clients.",
+  },
+  {
+    icon: ListChecks,
+    title: "Add a business, run an assessment",
+    body: "Pick an industry — or type your own — and run a checklist built for it. Every yes/no question rolls up into a score automatically.",
+  },
+  {
+    icon: LineChart,
+    title: "Run it day to day",
+    body: "Tasks, documents, messages, and your team's time clock all stay attached to the engagement, with reporting across every business at a glance.",
   },
 ];
 
@@ -127,39 +149,15 @@ const FAQS = [
 export default function Home() {
   return (
     <div className="flex flex-1 flex-col">
-      <header className="sticky top-0 z-10 flex items-center justify-between border-b bg-background/95 px-6 py-4 backdrop-blur sm:px-10">
-        <Image src="/iakkr-logo.png" alt="iakkr" width={90} height={45} priority className="dark:invert" />
-        <nav className="hidden items-center gap-6 text-sm font-medium text-muted-foreground md:flex">
-          <a href="#services" className="hover:text-foreground">
-            Services
-          </a>
-          <a href="#industries" className="hover:text-foreground">
-            Industries
-          </a>
-          <Link href="/resources" className="hover:text-foreground">
-            Resources
-          </Link>
-          <a href="#faq" className="hover:text-foreground">
-            FAQ
-          </a>
-        </nav>
-        <div className="flex items-center gap-2">
-          <Button variant="ghost" asChild>
-            <Link href="/login">Log in</Link>
-          </Button>
-          <Button asChild>
-            <Link href="/signup">Sign up</Link>
-          </Button>
-        </div>
-      </header>
+      <SiteHeader />
 
       <section className="grid items-center gap-10 px-6 py-16 sm:px-10 sm:py-24 lg:grid-cols-2 lg:gap-16">
         <div className="flex flex-col items-start gap-6 text-left">
           <Badge variant="secondary" className="gap-1.5">
             <Sparkles className="h-3.5 w-3.5" /> Any industry, any team size
           </Badge>
-          <h1 className="text-balance text-4xl font-extrabold tracking-tight sm:text-5xl">
-            Run your business from one place
+          <h1 className="text-balance text-5xl font-extrabold tracking-tight sm:text-6xl">
+            All your business, in one place with iakkr
           </h1>
           <p className="max-w-lg text-balance text-lg text-muted-foreground">
             iakkr is a CRM for running a business day to day — assessments, documents, conversations, tasks, and
@@ -168,10 +166,10 @@ export default function Home() {
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
             <Button size="lg" asChild>
-              <Link href="/signup">Get started</Link>
+              <Link href="/signup">Get started free</Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <Link href="/login">Log in</Link>
+              <Link href="/contact">Talk to us</Link>
             </Button>
           </div>
         </div>
@@ -180,7 +178,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t bg-muted/30 px-6 py-10 sm:px-10">
+      <section className="border-y bg-primary px-6 py-3 text-center text-sm font-medium text-primary-foreground sm:px-10">
+        Now in early access — onboarding our first consulting practices and business owners.
+      </section>
+
+      <section className="border-b bg-muted/30 px-6 py-10 sm:px-10">
         <div className="mx-auto grid max-w-3xl gap-6 sm:grid-cols-2">
           <Card>
             <CardHeader>
@@ -207,20 +209,50 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t px-6 py-12 sm:px-10">
-        <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {BENEFITS.map((b) => (
-            <div key={b.title} className="flex flex-col gap-2">
-              <b.icon className="h-6 w-6 text-primary" />
-              <h3 className="font-heading text-base font-semibold">{b.title}</h3>
-              <p className="text-sm text-muted-foreground">{b.body}</p>
-            </div>
-          ))}
+      <section className="px-6 py-16 sm:px-10 sm:py-20">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-10 flex flex-col gap-2 text-center">
+            <h2 className="text-2xl font-bold sm:text-3xl">Everything you need, nothing you don&apos;t</h2>
+            <p className="text-muted-foreground">The four things that make iakkr different.</p>
+          </div>
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {KEY_FEATURES.map((b) => (
+              <div key={b.title} className="flex flex-col gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10">
+                  <b.icon className="h-5 w-5 text-primary" />
+                </div>
+                <h3 className="text-base font-semibold">{b.title}</h3>
+                <p className="text-sm text-muted-foreground">{b.body}</p>
+                <a href="#services" className="text-sm font-medium text-primary hover:underline">
+                  Learn more →
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="border-t bg-primary px-6 py-4 text-center text-sm font-medium text-primary-foreground sm:px-10">
-        Ready to bring structure to your business? <Link href="/signup" className="underline underline-offset-2">Start free →</Link>
+      <section className="border-t bg-muted/30 px-6 py-16 sm:px-10 sm:py-20">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-12 flex flex-col gap-2 text-center">
+            <h2 className="text-2xl font-bold sm:text-3xl">How iakkr works</h2>
+            <p className="text-muted-foreground">From signup to a running engagement, in three steps.</p>
+          </div>
+          <div className="grid gap-10 sm:grid-cols-3">
+            {HOW_IT_WORKS.map((s, i) => (
+              <div key={s.title} className="flex flex-col items-start gap-3">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+                    {i + 1}
+                  </div>
+                  <s.icon className="h-5 w-5 text-primary" />
+                </div>
+                <h3 className="text-base font-semibold">{s.title}</h3>
+                <p className="text-sm text-muted-foreground">{s.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section id="services" className="border-t px-6 py-16 sm:px-10 sm:py-20">
@@ -270,7 +302,22 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="resources" className="border-t px-6 py-16 sm:px-10 sm:py-20">
+      <section className="border-t px-6 py-16 text-center sm:px-10 sm:py-20">
+        <div className="mx-auto flex max-w-2xl flex-col items-center gap-3">
+          <Badge variant="secondary">Early access</Badge>
+          <h2 className="text-2xl font-bold sm:text-3xl">Built early, in the open</h2>
+          <p className="text-balance text-muted-foreground">
+            iakkr is a new platform — we&apos;re onboarding our first consultants and business owners now, and
+            building alongside them. No fake logos or borrowed reviews here: real customer stories will show up
+            on this page once they exist.
+          </p>
+          <Button asChild className="mt-2">
+            <Link href="/signup">Be one of the first</Link>
+          </Button>
+        </div>
+      </section>
+
+      <section id="resources" className="border-t bg-muted/30 px-6 py-16 sm:px-10 sm:py-20">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 text-center">
           <BookOpen className="h-8 w-8 text-primary" />
           <h2 className="text-2xl font-bold sm:text-3xl">Free resources, plus a growing library inside</h2>
@@ -286,16 +333,6 @@ export default function Home() {
               <Link href="/signup">Explore after signing up</Link>
             </Button>
           </div>
-        </div>
-      </section>
-
-      <section className="border-t bg-muted/30 px-6 py-16 text-center sm:px-10 sm:py-20">
-        <div className="mx-auto flex max-w-2xl flex-col items-center gap-3">
-          <h2 className="text-2xl font-bold sm:text-3xl">Built for any business, any industry</h2>
-          <p className="text-balance text-muted-foreground">
-            iakkr is a new platform — we&apos;re early, and building alongside the business owners and consultants
-            who join us. Real customer stories will live here soon.
-          </p>
         </div>
       </section>
 
@@ -321,53 +358,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="mt-auto border-t px-6 py-12 sm:px-10">
-        <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-4">
-          <div>
-            <Image src="/iakkr-logo.png" alt="iakkr" width={80} height={40} className="dark:invert" />
-            <p className="mt-3 text-sm text-muted-foreground">The CRM for running your business, any industry.</p>
-          </div>
-          <div className="flex flex-col gap-2 text-sm">
-            <span className="font-semibold">Product</span>
-            <a href="#services" className="text-muted-foreground hover:text-foreground">
-              Services
-            </a>
-            <a href="#industries" className="text-muted-foreground hover:text-foreground">
-              Industries
-            </a>
-            <Link href="/resources" className="text-muted-foreground hover:text-foreground">
-              Resources
-            </Link>
-          </div>
-          <div className="flex flex-col gap-2 text-sm">
-            <span className="font-semibold">Account</span>
-            <Link href="/login" className="text-muted-foreground hover:text-foreground">
-              Log in
-            </Link>
-            <Link href="/signup" className="text-muted-foreground hover:text-foreground">
-              Sign up
-            </Link>
-          </div>
-          <div className="flex flex-col gap-2 text-sm">
-            <span className="font-semibold">Company</span>
-            <a href="#faq" className="text-muted-foreground hover:text-foreground">
-              FAQ
-            </a>
-            <Link href="/contact" className="text-muted-foreground hover:text-foreground">
-              Contact
-            </Link>
-            <Link href="/privacy" className="text-muted-foreground hover:text-foreground">
-              Privacy
-            </Link>
-            <Link href="/terms" className="text-muted-foreground hover:text-foreground">
-              Terms
-            </Link>
-          </div>
-        </div>
-        <div className="mx-auto mt-10 max-w-5xl border-t pt-6 text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} iakkr LLC
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

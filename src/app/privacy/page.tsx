@@ -1,16 +1,12 @@
-import Image from "next/image";
-import Link from "next/link";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 
 export const metadata = { title: "Privacy Policy | iakkr" };
 
 export default function PrivacyPage() {
   return (
     <div className="flex flex-1 flex-col">
-      <header className="border-b px-6 py-4 sm:px-10">
-        <Link href="/">
-          <Image src="/iakkr-logo.png" alt="iakkr" width={80} height={40} className="dark:invert" />
-        </Link>
-      </header>
+      <SiteHeader />
       <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-6 px-6 py-12 sm:px-0">
         <div>
           <h1 className="text-3xl font-bold">Privacy Policy</h1>
@@ -100,16 +96,7 @@ export default function PrivacyPage() {
           </p>
         </section>
       </main>
-      <footer className="border-t px-6 py-8 text-center text-sm text-muted-foreground sm:px-10">
-        © {new Date().getFullYear()} iakkr LLC ·{" "}
-        <Link href="/terms" className="hover:text-foreground">
-          Terms
-        </Link>{" "}
-        ·{" "}
-        <Link href="/contact" className="hover:text-foreground">
-          Contact
-        </Link>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

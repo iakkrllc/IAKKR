@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 
 function formatCurrency(n: number) {
   return n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
@@ -26,11 +27,7 @@ export default function RoiCalculatorPage() {
 
   return (
     <div className="flex flex-1 flex-col">
-      <header className="border-b px-6 py-4 sm:px-10">
-        <Link href="/">
-          <Image src="/iakkr-logo.png" alt="iakkr" width={80} height={40} className="dark:invert" />
-        </Link>
-      </header>
+      <SiteHeader />
       <main className="mx-auto flex w-full max-w-lg flex-1 flex-col gap-6 px-6 py-12 sm:px-0">
         <div>
           <Link href="/resources" className="text-sm text-muted-foreground hover:underline">
@@ -106,6 +103,7 @@ export default function RoiCalculatorPage() {
           <Link href="/signup">Get started with a consultant</Link>
         </Button>
       </main>
+      <SiteFooter />
     </div>
   );
 }
