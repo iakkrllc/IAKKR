@@ -10,33 +10,33 @@ export function SiteHeader() {
       <Link href="/">
         <Image src="/iakkr-logo.png" alt="iakkr" width={90} height={45} priority className="dark:invert" />
       </Link>
-      <nav className="hidden items-center gap-6 text-sm font-medium text-muted-foreground md:flex">
-        <Link href="/#services" className="hover:text-foreground">
+      <nav className="hidden items-center gap-6 text-sm font-semibold text-foreground md:flex">
+        <Link href="/#services" className="hover:text-primary">
           Services
         </Link>
-        <Link href="/#industries" className="hover:text-foreground">
+        <Link href="/#industries" className="hover:text-primary">
           Industries
         </Link>
-        <Link href="/resources" className="hover:text-foreground">
+        <Link href="/resources" className="hover:text-primary">
           Resources
         </Link>
-        <Link href="/#faq" className="hover:text-foreground">
+        <Link href="/#faq" className="hover:text-primary">
           FAQ
         </Link>
       </nav>
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-4">
+        <div className="hidden h-6 w-px bg-border sm:block" />
         <Link
           href="/login"
           className="hidden items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground sm:flex"
         >
           <UserRound className="h-4 w-4" /> Log In
         </Link>
-        <div className="hidden h-6 w-px bg-border sm:block" />
-        <Button variant="secondary" asChild className="rounded-full">
-          <Link href="/contact">Talk to us</Link>
-        </Button>
         <Button asChild className="rounded-full">
           <Link href="/signup">Sign up free</Link>
+        </Button>
+        <Button asChild className="rounded-full bg-foreground text-background hover:bg-foreground/85">
+          <Link href="/contact">Talk to us</Link>
         </Button>
       </div>
     </header>
