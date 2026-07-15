@@ -1,0 +1,76 @@
+// Prisma schema for MySQL with User, Team, Role and membership models
+// Docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  // datasource URL is configured in prisma.config.ts (DATABASE_URL env var)
+}
+
+// Models
+model User {
+  id         Int             @id @default(autoincrement())
+  name       String?
+  email      String          @unique
+  image      String?
+  provider   String?         // e.g., "google"
+  providerId String?         // provider account id
+  isOwner    Boolean         @default(false)
+  createdAt  DateTime        @default(now())
+  memberships Membership[]
+  roleAssignments RoleAssignment[]
+}
+
+model Team {
+  id         Int        @id @default(autoincrement())
+  name       String     @unique
+  description String?
+  createdAt  DateTime   @default(now())
+  memberships Membership[]
+  teamRoles  TeamRole[]
+}
+
+model Role {
+  id         Int        @id @default(autoincrement())
+  name       String     @unique
+  // permissions stored as a JSON object, e.g. {"resources": {"projects": "read_write"}}
+  permissions Json
+  createdAt  DateTime   @default(now())
+  roleAssignments RoleAssignment[]
+  teamRoles  TeamRole[]
+}
+
+// Assign a Role to a User
+model RoleAssignment {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  role      Role     @relation(fields: [roleId], references: [id])
+  roleId    Int
+  assignedAt DateTime @default(now())
+}
+
+// User membership in Team
+model Membership {
+  id        Int     @id @default(autoincrement())
+  user      User    @relation(fields: [userId], references: [id])
+  userId    Int
+  team      Team    @relation(fields: [teamId], references: [id])
+  teamId    Int
+  joinedAt  DateTime @default(now())
+  isActive  Boolean  @default(true)
+}
+
+// Assign a Role to a Team (owner can grant roles to teams)
+model TeamRole {
+  id         Int     @id @default(autoincrement())
+  team       Team    @relation(fields: [teamId], references: [id])
+  teamId     Int
+  role       Role    @relation(fields: [roleId], references: [id])
+  roleId     Int
+  assignedAt DateTime @default(now())
+}
