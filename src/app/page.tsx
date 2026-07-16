@@ -192,7 +192,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t bg-muted/30 px-6 py-16 sm:px-10 sm:py-20">
+      <section id="how-it-works" className="scroll-mt-20 border-t bg-muted/30 px-6 py-16 sm:px-10 sm:py-20">
         <div className="mx-auto max-w-5xl">
           <SectionHeading className="mb-14">How iakkr works</SectionHeading>
           <div className="grid gap-10 sm:grid-cols-3">
