@@ -3,6 +3,45 @@ import Link from "next/link";
 import { MessageSquare } from "lucide-react";
 import { ScrollToTop } from "@/components/scroll-to-top";
 
+const SOLUTION_COLUMNS = [
+  {
+    title: "Solutions by Role",
+    items: [
+      { href: "/#paths", label: "Consultants" },
+      { href: "/#paths", label: "Business Owners" },
+    ],
+  },
+  {
+    title: "Solutions by Function",
+    items: [
+      { href: "/#services", label: "Business & Engagement Management" },
+      { href: "/#services", label: "Vertical-Specific Assessments" },
+      { href: "/#services", label: "Document Sharing" },
+      { href: "/#services", label: "Messaging" },
+      { href: "/#services", label: "Task Tracking" },
+      { href: "/#services", label: "Team Time Tracking" },
+      { href: "/#services", label: "Reporting" },
+    ],
+  },
+  {
+    title: "Solutions by Industry",
+    items: [
+      { href: "/#industries", label: "Restaurant Consulting" },
+      { href: "/#industries", label: "Gas Station Consulting" },
+      { href: "/#industries", label: "Add Your Own Industry" },
+    ],
+  },
+  {
+    title: "Solutions by Problem",
+    items: [
+      { href: "/#services", label: "Centralize and Organize Your Work" },
+      { href: "/#services", label: "Unify Documents and Conversations" },
+      { href: "/#services", label: "Simplify Your Workflows" },
+      { href: "/#services", label: "Give Your Team Access Anywhere" },
+    ],
+  },
+];
+
 const ROW_1 = [
   { href: "/#services", label: "Product" },
   { href: "/#industries", label: "Solutions" },
@@ -31,6 +70,23 @@ export function SiteFooter() {
       <div className="mx-auto flex max-w-6xl flex-col gap-6">
         <div className="flex items-center gap-3">
           <Image src="/iakkr-logo.png" alt="iakkr" width={70} height={35} className="dark:invert" />
+        </div>
+
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {SOLUTION_COLUMNS.map((col) => (
+            <div key={col.title} className="flex flex-col gap-3">
+              <span className="text-sm font-semibold text-primary">{col.title}</span>
+              <ul className="flex flex-col gap-2.5">
+                {col.items.map((item) => (
+                  <li key={item.label}>
+                    <Link href={item.href} className="text-sm text-foreground hover:text-primary">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
         <nav className="flex flex-wrap gap-x-8 gap-y-3 border-t pt-6 text-sm font-medium">

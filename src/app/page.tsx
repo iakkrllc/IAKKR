@@ -136,7 +136,7 @@ export default function Home() {
         Now in early access — onboarding our first consulting practices and business owners.
       </section>
 
-      <section className="border-b bg-muted/30 px-6 py-10 sm:px-10">
+      <section id="paths" className="scroll-mt-20 border-b bg-muted/30 px-6 py-10 sm:px-10">
         <div className="mx-auto grid max-w-3xl gap-6 sm:grid-cols-2">
           <Card>
             <CardHeader>
