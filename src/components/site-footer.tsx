@@ -13,16 +13,16 @@ export function SiteFooter() {
         <div className="flex flex-col gap-2 text-sm">
           <span className="font-semibold">Product</span>
           <Link href="/#services" className="text-muted-foreground hover:text-foreground">
-            Services
+            Product
           </Link>
           <Link href="/#industries" className="text-muted-foreground hover:text-foreground">
-            Industries
+            Solutions
+          </Link>
+          <Link href="/#pricing" className="text-muted-foreground hover:text-foreground">
+            Pricing
           </Link>
           <Link href="/login" className="text-muted-foreground hover:text-foreground">
             Log in
-          </Link>
-          <Link href="/signup" className="text-muted-foreground hover:text-foreground">
-            Sign up
           </Link>
         </div>
         <div className="flex flex-col gap-2 text-sm">
@@ -39,6 +39,9 @@ export function SiteFooter() {
         </div>
         <div className="flex flex-col gap-2 text-sm">
           <span className="font-semibold">Company</span>
+          <Link href="/#company" className="text-muted-foreground hover:text-foreground">
+            About
+          </Link>
           <Link href="/contact" className="text-muted-foreground hover:text-foreground">
             Contact
           </Link>

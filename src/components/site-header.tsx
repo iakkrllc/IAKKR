@@ -12,16 +12,20 @@ export function SiteHeader() {
       </Link>
       <nav className="hidden items-center gap-6 text-sm font-semibold text-foreground md:flex">
         <Link href="/#services" className="hover:text-primary">
-          Services
+          Product
         </Link>
         <Link href="/#industries" className="hover:text-primary">
-          Industries
+          Solutions
+        </Link>
+        <Link href="/#pricing" className="hover:text-primary">
+          Pricing
         </Link>
         <Link href="/resources" className="hover:text-primary">
           Resources
         </Link>
-        <Link href="/#faq" className="hover:text-primary">
-          FAQ
+        <div className="hidden h-5 w-px bg-border lg:block" />
+        <Link href="/#company" className="hidden text-muted-foreground hover:text-primary lg:inline">
+          Company
         </Link>
       </nav>
       <div className="flex items-center gap-4">

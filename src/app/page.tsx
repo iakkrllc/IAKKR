@@ -163,7 +163,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="services" className="px-6 py-16 sm:px-10 sm:py-20">
+      <section id="services" className="scroll-mt-20 px-6 py-16 sm:px-10 sm:py-20">
         <div className="mx-auto max-w-5xl">
           <SectionHeading className="mb-16">What iakkr does</SectionHeading>
           <div className="flex flex-col gap-20">
@@ -212,7 +212,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="industries" className="border-t bg-muted/30 px-6 py-16 sm:px-10 sm:py-20">
+      <section id="industries" className="scroll-mt-20 border-t bg-muted/30 px-6 py-16 sm:px-10 sm:py-20">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-8 text-center">
           <div className="flex flex-col gap-2">
             <h2 className="text-2xl font-bold sm:text-3xl">Built for any industry</h2>
@@ -237,7 +237,20 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t px-6 py-16 text-center sm:px-10 sm:py-20">
+      <section id="pricing" className="scroll-mt-20 border-t px-6 py-16 text-center sm:px-10 sm:py-20">
+        <div className="mx-auto flex max-w-2xl flex-col items-center gap-3">
+          <h2 className="text-2xl font-bold sm:text-3xl">Pricing</h2>
+          <p className="text-balance text-muted-foreground">
+            Free during early access. We&apos;re onboarding our first consultants and business owners now — sign
+            up and we&apos;ll be in touch about pricing as you grow.
+          </p>
+          <Button asChild className="mt-2 rounded-full">
+            <Link href="/signup">Sign up free</Link>
+          </Button>
+        </div>
+      </section>
+
+      <section id="company" className="scroll-mt-20 border-t px-6 py-16 text-center sm:px-10 sm:py-20">
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-3">
           <Badge variant="secondary">Early access</Badge>
           <h2 className="text-2xl font-bold sm:text-3xl">Built early, in the open</h2>
@@ -252,7 +265,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="resources" className="border-t bg-muted/30 px-6 py-16 sm:px-10 sm:py-20">
+      <section id="resources" className="scroll-mt-20 border-t bg-muted/30 px-6 py-16 sm:px-10 sm:py-20">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 text-center">
           <BookOpen className="h-8 w-8 text-primary" />
           <h2 className="text-2xl font-bold sm:text-3xl">Free resources, plus a growing library inside</h2>
@@ -271,7 +284,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="faq" className="border-t px-6 py-16 sm:px-10 sm:py-20">
+      <section id="faq" className="scroll-mt-20 border-t px-6 py-16 sm:px-10 sm:py-20">
         <div className="mx-auto max-w-2xl">
           <h2 className="mb-8 text-center text-2xl font-bold sm:text-3xl">Frequently asked questions</h2>
           <Accordion type="single" collapsible className="w-full">
